@@ -4,5 +4,37 @@ button, div, form, input {
 
 img {
     height: 250px;
-    width: 300px
+    width: 350px;
+    padding:10px 15px 15px 15px;
+    
 }
+
+.nature{
+    margin:5px;
+}
+div#gifList-view div{
+    display: inline-block;
+}
+.jumbotron{
+    background-color:#337ab7!important;
+    color:#f5f5f5!important;
+    font-family: 'Rammetto One', cursive;
+    text-align:center;
+    margin-top:5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.gifContent{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.btn{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+p {
+    margin: 0 0 10px;
+    padding: 10px 0px 0px 20px;
+    font-size: 17px;
+}
+
+
+

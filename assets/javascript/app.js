@@ -1,5 +1,5 @@
  // Initial array of nature
- var nature = ["moutain", "cave", "clouds", "coral","bean","sea","sunrise","glacier","stars","ocean","plants","ice","lake","lava"];
+ var nature = ["moutain", "cave", "clouds", "coral","beach","sea","sunrise","glacier","stars","ocean","plants","lake","lava"];
  var API_Key = "WlF8WjA7Qw6v7MiRpE46AygGsEOUMhoj";
  // displaygifInfo function re-renders the HTML to display the appropriate content
  $("#gifList-view").on("click",".gif", function() {
@@ -21,7 +21,7 @@
  function displayGifInfo() {
 
      var gifSearch = $(this).attr("data-name");
-     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifSearch + "&limit=10&apikey=" + API_Key;
+     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifSearch + "&limit=12&apikey=" + API_Key;
      console.log(queryURL);
 
      // Creates AJAX call for the specific nature button being clicked
@@ -66,6 +66,7 @@
          // Adds a class of movie to our button
          a.addClass("nature");
          // Added a data-attribute
+         a.addClass("btn btn-primary");
          a.attr("data-name", nature[i]);
          // Provided the initial button text
          a.text(nature[i]);
