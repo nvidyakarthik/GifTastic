@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GifTastic</title>
+    <style type="text/css">
+        button,
+        div,
+        form,
+        input {
+          margin: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,12 +35,44 @@
             <input id="add-gif" type="submit" value="Submit">
         </form>
 
-        <!-- Movies will get dumped Dere -->
+        <!-- GifList will get dumped here -->
         <div id="gifList-view">
             <table id="giftable">
 
             </table>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            // Initial array of nature
+            var nature = ["beach", "cave", "clouds", "coral"];
+            // Function for displaying nature data
+            function renderButtons() {
+
+                // Deletes the  prior data to add new data
+                // (this is necessary otherwise you will have repeat buttons)
+                $("#buttons-view").empty();
+                // Loops through the array of movies
+                for (var i = 0; i < nature.length; i++) {
+
+                    // Then dynamicaly generates buttons for each nature thing in the array
+                    // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+                    var a = $("<button>");
+                    // Adds a class of movie to our button
+                    a.addClass("nature");
+                    // Added a data-attribute
+                    a.attr("data-name", nature[i]);
+                    // Provided the initial button text
+                    a.text(nature[i]);
+                    // Added the button to the buttons-view div
+                    $("#buttons-view").append(a);
+                }
+            }
+
+            // Calling the renderButtons function to display the intial buttons
+            renderButtons();
+
+        </script>
 
 
 </body>
