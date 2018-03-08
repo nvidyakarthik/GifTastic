@@ -1,5 +1,5 @@
  // Initial array of nature
- var nature = ["moutain", "cave", "clouds", "coral","bean","sea","sunrise"];
+ var nature = ["moutain", "cave", "clouds", "coral","bean","sea","sunrise","glacier","stars","ocean","plants","ice","lake","lava"];
  var API_Key = "WlF8WjA7Qw6v7MiRpE46AygGsEOUMhoj";
  // displaygifInfo function re-renders the HTML to display the appropriate content
  $("#gifList-view").on("click",".gif", function() {
@@ -42,8 +42,6 @@
               imageDiv.attr("data-animate",response.data[i].images["original"].url);
               imageDiv.attr("data-state","still");
               imageDiv.addClass("gif");
-
-
               gifInfoDiv.append(rating);
               gifInfoDiv.append(imageDiv);
               $("#gifList-view").append(gifInfoDiv);
