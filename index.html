@@ -11,7 +11,7 @@
         div,
         form,
         input {
-          margin: 10px;
+            margin: 10px;
         }
     </style>
 </head>
@@ -68,6 +68,22 @@
                     $("#buttons-view").append(a);
                 }
             }
+
+            // This function handles events when add gif button is clicked
+            $("#add-gif").on("click", function (event) {
+                event.preventDefault();
+                // This line of code will grab the input from the textbox
+                var getGif = $("#gif-input").val().trim();
+
+                // The Users gif request from the textbox is then added to our array
+                nature.push(getGif);
+
+                // Calling renderButtons 
+                renderButtons();
+            });
+
+          
+
 
             // Calling the renderButtons function to display the intial buttons
             renderButtons();
