@@ -45,9 +45,25 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
             // Initial array of nature
-            var nature = ["beach", "cave", "clouds", "coral"];
+            var nature = ["moutain", "cave", "clouds", "coral","bean","sea","sunrise"];
             var API_Key = "WlF8WjA7Qw6v7MiRpE46AygGsEOUMhoj";
             // displaygifInfo function re-renders the HTML to display the appropriate content
+            $("#gifList-view").on("click",".gif", function() {
+                // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+                var state = $(this).attr("data-state");
+                // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+                // Then, set the image's data-state to animate
+                // Else set src to the data-still value
+                if (state === "still") {                   
+                $(this).attr("src", $(this).attr("data-animate"));
+                $(this).attr("data-state", "animate");
+            } else {
+                $(this).attr("src", $(this).attr("data-still"));
+                
+                $(this).attr("data-state", "still");
+            }
+        });
+            
             function displayGifInfo() {
 
                 var gifSearch = $(this).attr("data-name");
@@ -65,17 +81,20 @@
                         console.log("rating " + response.data[i].rating);
                         console.log("fixed image" + response.data[i].images["fixed_height_still"].url);
                         console.log("still image" + response.data[i].images["original_still"].url);
-                        //var ratingDiv=$("<div>").html("<p>"+response.data[i].rating+"<p>");
+                        var gifInfoDiv=$("<div>").addClass("gifContent");
                         var rating = $("<p>").text(response.data[i].rating);
                         console.log("ratingDiv" + rating);
                          var imageDiv = $("<img>")
-                         imageDiv.attr("src", response.data[i].images["fixed_height_still"].url);
-                         imageDiv.attr("data_still",response.data[i].images["fixed_height_still"].url);
-                         imageDiv.attr("data_animate",response.data[i].images["fixed_width"].url);
-                         imageDiv.addClass("still");       
+                         imageDiv.attr("src", response.data[i].images["original_still"].url);
+                         imageDiv.attr("data-still",response.data[i].images["original_still"].url);
+                         imageDiv.attr("data-animate",response.data[i].images["fixed_width"].url);
+                         imageDiv.attr("data-state","still");
+                         imageDiv.addClass("gif");
 
-                         $("#gifList-view").append(rating);
-                         $("#gifList-view").append(imageDiv);
+
+                         gifInfoDiv.append(rating);
+                         gifInfoDiv.append(imageDiv);
+                         $("#gifList-view").append(gifInfoDiv);
 
                             
                         }
@@ -110,9 +129,11 @@
                 event.preventDefault();
                 // This line of code will grab the input from the textbox
                 var getGif = $("#gif-input").val().trim();
+                if(getGif!=""){
 
                 // The Users gif request from the textbox is then added to our array
                 nature.push(getGif);
+                }
 
                 // Calling renderButtons 
                 renderButtons();
