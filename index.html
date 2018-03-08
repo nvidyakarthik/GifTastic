@@ -46,6 +46,37 @@
         <script type="text/javascript">
             // Initial array of nature
             var nature = ["beach", "cave", "clouds", "coral"];
+            var API_Key = "WlF8WjA7Qw6v7MiRpE46AygGsEOUMhoj";
+            // displaygifInfo function re-renders the HTML to display the appropriate content
+            function displayGifInfo() {
+
+                var gifSearch = $(this).attr("data-name");
+                var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifSearch + "&limit=10&apikey=" + API_Key;
+                console.log(queryURL);
+
+                // Creates AJAX call for the specific nature button being clicked
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                }).then(function (response) {
+                    $("#gifList-view").empty();
+
+                    for (var i = 0; i < response.data.length; i++) {
+                        console.log("rating " + response.data[i].rating);
+                        console.log("fixed image" + response.data[i].images["fixed_height_still"].url);
+                        console.log("still image" + response.data[i].images["original_still"].url);
+                        //var ratingDiv=$("<div>").html("<p>"+response.data[i].rating+"<p>");
+                        var rating = $("<p>").text(response.data[i].rating);
+                        console.log("ratingDiv" + rating);
+                         var imageDiv = $("<div>").html("<img src=" + response.data[i].images["fixed_width"].url + ">");
+                         $("#gifList-view").append(rating);
+                         $("#gifList-view").append(imageDiv);
+
+                            
+                        }
+                    });
+            }
+
             // Function for displaying nature data
             function renderButtons() {
 
@@ -82,7 +113,8 @@
                 renderButtons();
             });
 
-          
+            // Adding click event listeners to all elements with a class of "nature"
+            $(document).on("click", ".nature", displayGifInfo);
 
 
             // Calling the renderButtons function to display the intial buttons
