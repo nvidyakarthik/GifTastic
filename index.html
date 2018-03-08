@@ -68,7 +68,12 @@
                         //var ratingDiv=$("<div>").html("<p>"+response.data[i].rating+"<p>");
                         var rating = $("<p>").text(response.data[i].rating);
                         console.log("ratingDiv" + rating);
-                         var imageDiv = $("<div>").html("<img src=" + response.data[i].images["fixed_width"].url + ">");
+                         var imageDiv = $("<img>")
+                         imageDiv.attr("src", response.data[i].images["fixed_height_still"].url);
+                         imageDiv.attr("data_still",response.data[i].images["fixed_height_still"].url);
+                         imageDiv.attr("data_animate",response.data[i].images["fixed_width"].url);
+                         imageDiv.addClass("still");       
+
                          $("#gifList-view").append(rating);
                          $("#gifList-view").append(imageDiv);
 
