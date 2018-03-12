@@ -1,5 +1,5 @@
  // Initial array of nature
- var nature = ["moutain", "cave", "clouds", "coral","beach","sea","sunrise","glacier","stars","ocean","plants","lake","lava"];
+ var nature = ["mountain", "cave", "clouds", "coral","beach","sea","sunrise","glacier","stars","ocean","plants","lake","lava"];
  var API_Key = "WlF8WjA7Qw6v7MiRpE46AygGsEOUMhoj";
  // displaygifInfo function re-renders the HTML to display the appropriate content
  $("#gifList-view").on("click",".gif", function() {
@@ -10,9 +10,11 @@
      // Else set src to the data-still value
      if (state === "still") {                   
      $(this).attr("src", $(this).attr("data-animate"));
+     $(this).parents("div .gifContent").css("border","2px solid #337ab7");   
      $(this).attr("data-state", "animate");
  } else {
      $(this).attr("src", $(this).attr("data-still"));
+     $(this).parents("div .gifContent").css("border","none")   
      
      $(this).attr("data-state", "still");
  }
@@ -79,7 +81,7 @@
  $("#add-gif").on("click", function (event) {
      event.preventDefault();
      // This line of code will grab the input from the textbox
-     var getGif = $("#gif-input").val().trim();
+     var getGif = $("#gif-input").val().toLowerCase().trim();
      if(getGif!=""){
 
      // The Users gif request from the textbox is then added to our array
