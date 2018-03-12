@@ -22,7 +22,7 @@
  function displayGifInfo() {
 
      var gifSearch = $(this).attr("data-name");
-     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifSearch + "&limit=12&apikey=" + API_Key;
+     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifSearch + "&limit=12&apikey=" + API_Key;
      console.log(queryURL);
 
      // Creates AJAX call for the specific topic button being clicked
