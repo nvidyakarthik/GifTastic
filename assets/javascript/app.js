@@ -84,6 +84,8 @@
 
      // The Users gif request from the textbox is then added to our array
      nature.push(getGif);
+     $("#gif-input").val("");
+     
      }
 
      // Calling renderButtons 

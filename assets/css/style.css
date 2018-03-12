@@ -35,6 +35,21 @@ p {
     padding: 10px 0px 0px 20px;
     font-size: 17px;
 }
+#add-gif{
+    margin:10px;
+}
+
+
+#formDiv{
+    text-align:center;
+    margin:20px;
+}
+.form-control{
+    display:inline!important;
+    width:40%!important;
+    
+}
+
 
 
 
