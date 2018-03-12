@@ -1,5 +1,5 @@
- // Initial array of nature
- var nature = ["mountain", "cave", "clouds", "coral","beach","sea","sunrise","glacier","stars","ocean","plants","lake","lava"];
+ // Initial array of topics
+ var topics = ["mountain", "cave", "clouds", "coral","beach","sea","sunrise","glacier","stars","ocean","plants","lake","lava"];
  var API_Key = "WlF8WjA7Qw6v7MiRpE46AygGsEOUMhoj";
  // displaygifInfo function re-renders the HTML to display the appropriate content
  $("#gifList-view").on("click",".gif", function() {
@@ -14,8 +14,7 @@
      $(this).attr("data-state", "animate");
  } else {
      $(this).attr("src", $(this).attr("data-still"));
-     $(this).parents("div .gifContent").css("border","none")   
-     
+     $(this).parents("div .gifContent").css("border","none");    
      $(this).attr("data-state", "still");
  }
 });
@@ -26,7 +25,7 @@
      var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifSearch + "&limit=12&apikey=" + API_Key;
      console.log(queryURL);
 
-     // Creates AJAX call for the specific nature button being clicked
+     // Creates AJAX call for the specific topic button being clicked
      $.ajax({
          url: queryURL,
          method: "GET"
@@ -53,25 +52,25 @@
          });
  }
 
- // Function for displaying nature data
+ // Function for creating dynamic buttons for each item in the topics array
  function renderButtons() {
 
      // Deletes the  prior data to add new data
      // (this is necessary otherwise you will have repeat buttons)
      $("#buttons-view").empty();
      // Loops through the array of movies
-     for (var i = 0; i < nature.length; i++) {
+     for (var i = 0; i < topics.length; i++) {
 
-         // Then dynamicaly generates buttons for each nature thing in the array
+         // Then dynamicaly generates buttons for each item in the array
          // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
          var a = $("<button>");
          // Adds a class of movie to our button
          a.addClass("nature");
          // Added a data-attribute
          a.addClass("btn btn-primary");
-         a.attr("data-name", nature[i]);
+         a.attr("data-name", topics[i]);
          // Provided the initial button text
-         a.text(nature[i]);
+         a.text(topics[i]);
          // Added the button to the buttons-view div
          $("#buttons-view").append(a);
      }
@@ -85,7 +84,7 @@
      if(getGif!=""){
 
      // The Users gif request from the textbox is then added to our array
-     nature.push(getGif);
+     topics.push(getGif);
      $("#gif-input").val("");
      
      }
