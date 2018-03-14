@@ -1,5 +1,5 @@
  // Initial array of topics
- var topics = ["mountain", "cave", "clouds", "coral","beach","sea","sunrise","glacier","stars","ocean","plants","lake","lava"];
+ var topics = ["mountain", "cave", "lights", "coral","beach","sea","sunrise","glacier","stars","ocean","plants","lake","lava"];
  var API_Key = "WlF8WjA7Qw6v7MiRpE46AygGsEOUMhoj";
  // displaygifInfo function re-renders the HTML to display the appropriate content
  $("#gifList-view").on("click",".gif", function() {
